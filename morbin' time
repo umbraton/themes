@@ -1,0 +1,664 @@
+<html>
+<!---
+MORBIN' TIME by @gronru
+just kidding, i hate marvel and i'm too afraid to ask at this point.
+base code by @ps1 
+
+please don't steal this or remove my credit. ffs.
+--->
+
+<head>
+        <title>{Title}</title>
+        <link rel="icon" href="{image:FavIcon}" type="image/gif" >
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+
+
+<!--- theme options --->
+
+<meta name="image:favicon" content=""/>  
+<meta name="image:sidebar" content=""/>
+<meta name="image:background" content=""/>
+<meta name="image:notes pixel" content=""/>
+<meta name="image:tooltip bkg" content=""/>
+<meta name="image:cursor" content=""/>
+
+<meta name="color:background" content="#ddd">
+<meta name="color:posts" content="#fff">
+<meta name="color:font color" content="#000">
+<meta name="color:description" content="#fff">
+<meta name="color:description bkg" content="#000">
+<meta name="color:font glow" content="#000">
+<meta name="color:font outline" content="#0000ff">
+<meta name="color:links" content="#0000ff">
+<meta name="color:links hover" content="#ff0000">
+<meta name="color:links glow" content="#0000ff">
+<meta name="color:links outline" content="#000">
+<meta name="color:search font" content="#000">
+<meta name="color:search bkg" content="#ddd">
+<meta name="color:tooltip color" content="#000">
+<meta name="color:tooltip background" content="#ddd">
+<meta name="color:border" content="#000">
+
+<meta name="select:border" content="solid"/>
+<meta name="select:border" content="dashed"/>
+<meta name="select:border" content="dotted"/>
+<meta name="select:border" content="double"/>
+<meta name="select:border" content="inset"/>
+<meta name="select:border" content="outset"/>
+<meta name="select:border" content="ridge"/>
+<meta name="select:border" content="groove"/>
+
+<meta name="select:links hover" content="none"/>
+<meta name="select:links hover" content="underline"/>
+<meta name="select:links hover" content="overline"/>
+<meta name="select:links hover" content="line-through"/>
+
+<meta name="text:border size" content="2"/>
+
+<meta name="text:title" content="TITLE">
+<meta name="text:description" content="description goes here! you can pretty much make it as long as you want. there's a scrollbar that will appear if it gets too lengthy">
+<meta name="text:title font family" content="arial">
+<meta name="text:font family" content="arial">
+<meta name="text:title size" content="30">
+<meta name="text:font size" content="18">
+<meta name="text:desc font size" content="14">
+<meta name="text:search text" content="..?">
+
+<meta name="if:links underline" content="0"/>
+<meta name="if:custom cursor" content="0" />
+<meta name="if:notes pixel" content="0" />
+<meta name="if:tile background" content="0" />
+<meta name="if:hide title" content="0"/>
+<meta name="if:hide searchbar" content="0"/>
+<meta name="if:hide links" content="0"/>
+<meta name="if:glow text" content="0" />
+<meta name="if:outline text" content="0" />
+<meta name="if:redirect" content="0" /> 
+<meta name="if:transparent posts" content="0" /> 
+<meta name="if:hide caption" content="0"/>
+<meta name="if:hide tags" content="0" />
+
+<meta name="text:redirect link" content="/tagged/0">
+<meta name="text:link 1" content="ONE">
+<meta name="text:link 1 URL" content="/">
+<meta name="text:link 2" content="TWO">
+<meta name="text:link 2 URL" content="/">
+<meta name="text:link 3" content="THREE">
+<meta name="text:link 3 URL" content="/">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!--
+       NPF IMAGES READJUSTMENT | @glenthemes
+       v2.0 [last updated: 2021-06-03]
+-->
+<link href="//glen-npf-2020.glitch.me/npf-override.css" rel="stylesheet">
+<script src="//glen-npf-2020.glitch.me/npf-evenize.js"></script>
+
+<style type="text/css">
+:root {
+    --NPF-Image-Spacing:2px;
+    --NPF-Bottom-Gap-From-Captions:1em;
+}
+</style>
+
+<style type="text/css">
+
+/* @FONT-FACE CUSTOM FONTS */
+
+@font-face {
+src: url(https://dl.dropbox.com/s/izcqpsmt304xm62/PixelOperator.ttf);
+font-family:'pixel operator';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/2p4cej3z8vlsjah/berylium%20rg.ttf);
+font-family:'berylium';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/uugen46dk8heyix/ShortStack-Regular.ttf);
+font-family:'short stack';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/hniy5n0aw14x1mk/Mali-SemiBold.ttf);
+font-family:'mali';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/u0obbsgw0vw55bp/ComicHelvetic_Light.otf);
+font-family:'comic helvetic';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/0863f1cub6myucv/RobotoCondensed-Regular.ttf);
+font-family:'roboto condensed';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/tlodwntfri6xf2h/OpenDyslexic-Regular.otf);
+font-family:'open dyslexic';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/8t6ffisv86uyhhq/playtime.ttf);
+font-family:'playtime';
+}
+@font-face {
+src: url(https://dl.dropbox.com/s/zfrrb85f0esntjp/KOMIKAH_.ttf);
+font-family:'komika';
+}
+
+::-moz-selection {
+    background: {color:background};
+    color: {color:links hover};}
+    
+::selection {
+    background: {color:background};
+    color: {color:links};}
+
+#s-m-t-tooltip {
+    z-index: 999999999;
+    background-image: url('{image:tooltip bkg}');
+    background-color: {color:tooltip background};
+    border: {text:border size}px {select:border} {color:border};
+    color: {color:tooltip color};
+    font-size: {text:Font Size}px;
+    text-align: center;
+    {block:IfGlowText}
+    text-shadow: 0 0 2px {color:tooltip color},
+    0 0 2px {color:tooltip color};
+    {/block:IfGlowText}
+    {block:IfOutlineText}
+    text-shadow: -1px 0 {color:font outline}, 0 1px {color:font outline}, 1px 0 {color:font outline}, 0 -1px {color:font outline};
+    {/block:IfOutlineText}
+    transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    text-transform: normal;
+    max-width: 300px;
+    display: block;
+    word-wrap: break-word;
+    border-radius:6px;
+    padding: 5px 7px 5px 7px;
+    margin: -30px 0px 10px 20px;}
+
+body {
+    background: {color:background};
+    background-image: url({image:Background});
+    background-attachment: fixed;
+    {block:IfNotTileBackground}
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    {/block:IfNotTileBackground}
+    font-family: '{text:font family}';
+    font-size: {text:font size}px;
+    color: {color:font color};
+    line-height: 120%;
+    word-wrap: break-word;
+    overflow-x:hidden;
+    {block:IfGlowText}
+    text-shadow: 0 0 2px {color:font glow}, 0 0 2px {color:font glow};
+    {/block:IfGlowText}
+    {block:IfOutlineText}
+    text-shadow: -1px 0 {color:font outline}, 0 1px {color:font outline}, 1px 0 {color:font outline}, 0 -1px {color:font outline};
+    {/block:IfOutlineText}}
+    
+{block:IfCustomCursor}
+body, *, a, a:hover { cursor:url({image:cursor}), auto;}{/block:IfCustomCursor}
+p {margin: 10px;}
+ul {list-style: square;}
+img {max-width: 100%;}
+h1 {line-height: 150%;}
+
+a:link, a:active, a:visited {
+    color: {color:links};
+    {block:IfGlowText}
+    text-shadow: 0 0 2px {color:links glow}, 0 0 2px {color:links glow};
+    {/block:IfGlowText}
+    {block:IfOutlineText}
+    text-shadow: -1px 0 {color:links outline}, 0 1px {color:links outline}, 1px 0 {color:links outline}, 0 -1px {color:links outline};
+    {/block:IfOutlineText}
+    {block:IfNotLinksUnderline}
+    text-decoration: none;{/block:IfNotLinksUnderline}
+    {block:IfLinksUnderline}
+    text-decoration: underline;{/block:IfLinksUnderline}
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;}
+
+a:hover {
+    color: {color:Links Hover};
+    text-decoration: {select:links hover};
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    letter-spacing:0.9px;
+}
+
+::-webkit-scrollbar-track {
+    border: 0;
+    background-color: {color:Background};}
+::-webkit-scrollbar {
+    width: 6px;}
+::-webkit-scrollbar-thumb {
+    background-color: {color:links};}
+
+/* the container of both your sidebar and posts */
+
+#content {
+    margin: auto;
+    width: 700px;}
+
+/* sidebar style obvi */
+
+#sidebar {
+    color: {color:font color};
+    text-align: center;
+    margin-left: 50px;
+    position: fixed;
+    width: 200px;}
+ 
+#sidebar img {max-width:100%; border:{text:border size}px {select:border} {color:border}; border-radius:6px;}
+.desc {
+    margin-top: 10px; font-size: {text:desc font size}px; word-wrap: break-word;}
+}
+.linkz {margin-top: 10px; font-size:{text:font size}px;}
+    
+.title {margin-bottom: 10px; font-size:{text:title size}px; font-family:{text:title font family};}
+
+.thing {
+  position: relative;
+  width: 100%;
+}
+
+.sidebarim {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  border:{text:border size}px {select:border} {color:border};
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  width: 200px;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: {color:description bkg};
+  color:{color:description};
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius:6px;
+}
+
+.thing:hover .overlay {
+  opacity: 0.7;
+}
+
+.hov {
+  color: white;
+  font-size: {text:desc font size};
+  position: absolute;
+  margin:auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* post style obvi */
+
+.posts {
+    {block:IfNotTransparentPosts}
+    background-color: {color:posts};{/block:IfNotTransparentPosts}
+    {block:IfTransparentPosts}
+    background-color: transparent;{/block:IfTransparentPosts}
+    border: {text:border size}px {select:border} {color:border};
+    margin-top: 50px;
+    margin-bottom: 80px;
+    margin-left: 300px;
+    padding: 10px;
+    width: 350px;
+    border-radius:6px;
+    position: relative;}
+
+.posts blockquote {
+    margin: 10px;
+    padding-left: 5px;
+    border-left: 1px dashed {color:links};}
+    
+
+/* footer of every post */
+
+#notes, .tags{
+    text-align: center;
+    margin-top: 5px;}
+    
+#notes img {display: inline;}
+
+/* stylize your asks */
+
+.question {
+    padding: 5px; margin-top: 10px;
+    border: 1px solid {color:font color};}
+
+/* where the notes show on the permalink page */
+
+#permanotes {
+    margin-top: 20px;
+    margin-bottom: 10px;}
+   
+#permanotes ol.notes {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;}
+    
+#permanotes img.avatar {
+    margin-right: 10px;
+    border: 1px solid {color:font color};
+    display: inline;
+    width: 16px;
+    height: 16px;}
+
+/* next page/previous page */
+
+.pagination {
+    text-align: right;
+    font-size: 50px;
+    margin-left: 300px;
+    margin-top: -50px;
+    margin-bottom: 100px;
+    padding: 10px;
+    width: 400px;}
+
+/* searchbar stuff */
+
+.search {margin: 10px 0 10px 0;} 
+
+.query {
+    border: {text:border size}px {select:border} {color:border};
+    height:40px;
+    width:195px;
+    padding-left:3px;
+    border-radius:6px;
+    color: {color:search font};
+    font-size: inherit;
+    font-family: inherit;
+    background-color: {color:search bkg};}
+    
+.query::placeholder {color: {color:search font};}
+
+/* quote stylization */
+
+.quote {
+    text-align: justify;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 140%;
+    line-height: 130%;}
+
+.source {
+    text-align: right;}
+
+/* audio stuff */
+
+.spotify_audio_player {
+    height:80px!important;
+    width:100%!important;}
+    
+.soundcloud_audio_player {
+    height:150px!important;
+    width:100%!important;}
+
+/* playbutton background */
+
+.trackback {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: #fff;
+    padding: 10px;
+    opacity: .4;}
+
+/* playbutton */
+
+.pressplay{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    left: -6px;
+    top: -3px;}
+ 
+/* album img container */
+
+.albumpic {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 79px;
+    height: 79px;}
+
+/* album img */
+
+.albumpic img {
+    width: 100%;
+    height: auto;
+    border: 1px solid {color:font color};}
+    
+/* track info ye */
+            
+.trackinfo {
+    width: auto;
+    display:inline-block;
+    margin-left: 90px;
+    min-height: 85px;}
+
+/* makes both audio player & track info inline */
+
+.audiowrapper {
+position: relative; display:inline-block;}
+
+/* obvi the credit link at the bottom corner */
+
+#credit { position: fixed; bottom: 15px; left: 15px; font-size: 26px;}
+
+/* base code by @ps1 */
+
+
+</style>
+
+{block:IfRedirect}
+<script>
+if(window.location.pathname == '/') location.replace('{text:Redirect Link}');
+</script> 
+{block:IfRedirect}
+
+<!-- basic scripts for tooltip -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.tumblr.com/7qjmkr5/IUmmdsy41/jquery.style-my-tooltips.js"></script>
+
+<script>
+   (function($){
+       $(document).ready(function(){
+           $("[title]").style_my_tooltips();
+       });
+   })(jQuery);
+</script> 
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<!-- search tags -->
+<script>
+$(document).ready(function(){
+   $('.search').submit(function(event){
+       var value = $('input:first').val();
+       location.replace('http://{Name}.tumblr.com/tagged/' + value);
+   });
+});
+</script>
+
+</head>  
+
+  
+<div id="content"> 
+
+<div id="sidebar">
+
+<!-- i made everything optional but you can remove the variables if you want everything default. -->
+
+{block:ifNotHideTitle}
+<div class="title"><a href="/">{text:title}</a></div>
+{/block:ifNotHideTitle}
+
+<div class="thing">
+<a href="/"><img src="{image:sidebar}" class="sidebarim"></a>
+<div class="overlay">
+    <div class="thing"><div class="desc">{text:description}</div></div>
+  </div>
+</div>
+
+{block:ifNotHideSearchbar}
+<div class="search">
+<form class="search" action="javascript:return false">
+<input type="text" class="query" placeholder="{text:search text}">
+</div>{/block:ifNotHideSearchbar}
+
+{block:ifNotHideLinks}
+<div class="linkz">
+<a href="{text:link 1 URL}">{text:link 1}</a></br>
+<a href="{text:link 2 URL}">{text:link 2}</a></br>
+<a href="{text:link 3 URL}">{text:link 3}</a>
+</div>{/block:ifNotHideLinks}
+
+</div>
+
+{block:Posts}
+<div class="posts" post-type="{PostType}">
+
+{block:Text}
+{block:Title}<a href="{Permalink}">{Title}</a>{/block:Title}
+{Body}
+{/block:Text}
+
+{block:Quote}
+<div class="quote">"{Quote}"</div>
+{block:Source}<div class="source">&mdash; {Source}</div>{/block:Source}
+{/block:Quote}
+
+{block:Link}
+<big><a href="{URL}">{Name}</a></big>
+{block:Description}{Description}{/block:Description}
+{/block:Link}
+
+{block:Chat}
+{block:Title}{Title}{/block:Title}
+{block:Lines}
+<div class="{Alt} user_{UserNumber}">
+{block:Label}{Label}{/block:Label} {Line}
+</div>
+{/block:Lines}
+{/block:Chat}
+
+
+{block:Answer}
+{Asker}
+<div class="question">{Question}</div>
+{Answer}
+{/block:Answer}
+
+
+{block:Photo}
+{LinkOpenTag}<img src="{PhotoURL-400}" alt="{Permalink}"/>{LinkCloseTag}
+{/block:Photo}
+
+{block:Photoset}
+{Photoset-400}
+{/block:Photoset}
+
+{block:Video}
+{Video-400}
+{/block:Video}
+
+{block:AudioPlayer}
+<div class="audiowrapper">
+{block:AlbumArt}
+<div class="albumpic"><img src="{AlbumArtURL}"></div>
+{/block:AlbumArt}
+<div class="trackback">
+<div class="pressplay">
+{AudioPlayer}
+</div></div>
+<div class="trackinfo">
+{block:TrackName}{TrackName}{/block:TrackName}<br>
+{block:Artist}<b>{Artist}</b>{/block:Artist}<br>
+{block:Album}<i>{Album}</i>{/block:Album}<br>
+</div></div>
+{/block:AudioPlayer}
+   
+{block:ifNotHideCaption}
+{block:Caption}{Caption}{/block:Caption}
+{/block:ifNotHideCaption}
+
+
+{block:IndexPage}<div id="notes">
+<a href="{Permalink}" data-toggle="tooltip" title="{TimeAgo}">{12Hour}:{Minutes}</a>
+{block:IfNotNotesPixel} {text:link spacer} {block:IfNotNotesPixel}
+{block:IfNotesPixel} <img src="{image:notes pixel}"> {/block:IfNotesPixel}
+<a href="{ReblogURL}" data-toggle="tooltip" title="Reblog?">{NoteCount}</a>
+</div>{/block:IndexPage}
+
+{block:IndexPage}{block:ifNotHideTags}
+<div class="tags">
+{block:HasTags}{block:Tags}
+<a href="{TagURL}">#{Tag}</a>
+{/block:Tags}{/block:HasTags}</div>
+{/block:ifNotHideTags}{/block:IndexPage}
+
+
+{block:PermalinkPage}
+{block:ifHideCaption}
+{block:Caption}{Caption}{/block:Caption}
+{/block:ifHideCaption}
+
+<p>{block:NoteCount}Notes: <a href="{Permalink}">{NoteCount}</a><br>{/block:NoteCount}
+{block:HasTags}Tags: {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}<br>{/block:HasTags}
+{block:RebloggedFrom}
+Via: <a href="{ReblogParentURL}">{ReblogParentName}</a>
+<br>{/block:RebloggedFrom}{block:ContentSource}
+Source: <a href="{SourceURL}">{SourceTitle}</a>
+{/block:ContentSource}</p>
+
+{block:NoteCount}<div id="permanotes">
+{block:PostNotes}{PostNotes}{/block:PostNotes}
+</div>{/block:NoteCount}
+{/block:PermalinkPage}
+</div>
+{/block:Posts}
+
+{block:IndexPage}<div class="pagination">    
+{block:Pagination}{block:PreviousPage}<a href="{PreviousPage}" style="float:left;">&larr;</a>&nbsp;&nbsp;{/block:PreviousPage}{block:NextPage} 
+ <a href="{NextPage}">&rarr;</a></p>{/block:NextPage}{/block:Pagination}
+</div>{/block:IndexPage}
+
+</div> 
+</div>
+
+<div id="credit">
+<a href="https://gronru.tumblr.com/" data-toggle="tooltip" title="@gronru">∞</a>
+</div>
+</body>
+</html>
